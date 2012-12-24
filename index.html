@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+
+    <link href="external/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="external/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="external/datepicker/css/datepicker.css">
+    <link rel="stylesheet" href="external/tagsinput/jquery.tagsinput.css">
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="external/jquery.js"></script>
+    <script src="external/datepicker/js/bootstrap-datepicker.js"></script>
+
+    <script src="external/tagsinput/jquery.tagsinput.min.js"></script>
+
+    <script src="reposition.js"></script>
+</head>
+<body>
+    <div class="container">
+	<!--#include virtual="navigation.tpl" -->
+
+
+        <div class="project-wrapper">
+
+            <div class="row-fluid">
+<!-- SEARCH PROJECT  (BEGIN) -->
+                <div class="span12">
+                    <form class="search-form">
+
+                        <div class="headling m-clearfix">
+                            <span class="description">Заголовок статьи</span>
+                            <input type="text">
+                        </div>
+
+                        <span class="id m-clearfix">
+                            <span class="description">ID</span>
+                            <input type="text">
+                        </span>
+
+                        <div class="date">
+                            <span class="description">Дата комментария c</span>
+                            <div class="input-append date" id="dp0" data-date="12.02.2012" data-date-format="dd.mm.yyyy">
+                                <input class="" size="16" type="text" >
+                                <span class="add-on"><i class="icon-th"></i></span>
+                            </div>
+                            <span class="description">по</span>
+                            <div class="input-append date" id="dp1" data-date="12.02.2012" data-date-format="dd.mm.yyyy">
+                                <input class="" size="16" type="text" >
+                                <span class="add-on"><i class="icon-th"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="button">
+                            <button class="btn btn-small">Найти</button>
+                        </div>
+                    </form>
+                </div>
+<!-- SEARCH PROJECT  (END) -->
+            </div>
+
+            <div class="row-fluid">
+<!-- ADDING PROJECT  (BEGIN) -->
+                <div class="span3 sub-menu sheet">
+                    <h5 class="title">
+                        Проекты
+                        <a href="#" class="btn btn-mini add"> <i class="icon-plus"></i> Добавить</a>
+                    </h5>
+
+                    <ul class="list">
+                        <li class="active"><a href="#">РБК Daily <i class="ico small arr"></i></a></li>
+                        <li><a href="#">Недвижимость <i class="ico small arr"></i></a></li>
+                        <li><a href="#">Спорт <i class="ico small arr"></i></a></li>
+                        <li><a href="#">Стиль <i class="ico small arr"></i></a></li>
+                        <li><a href="#">Tata <i class="ico small arr"></i></a></li>
+                    </ul>
+                </div>
+<!-- ADDING PROJECT  (END) -->
+
+<!-- PROJECT - FILTRATION TOPICS (END) -->
+                <div class="span9 content sheet">
+                    <div class="title">
+                        <div class="headling">
+                        	<h2>РБК Daily</h2>
+                        	<i class="ico big info js-show-popup"></i>
+							<!--#include virtual="data-project_root.tpl" -->
+							<!--#include virtual="data-project_not-root.tpl" -->
+                    	</div>
+                    </div>
+
+                    <div class="checkbox-wrapper">
+                        <div class="headling">
+                            <h5>Разделы</h5>
+                            <a href="#" class="add-project js-show-popup">Добавить раздел</a>
+							<!--#include virtual="adding-section_root.tpl" -->
+                        </div>
+                        <div class="checkbox-block">
+                            <ul>
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        Все разделы
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        В мире
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+									<!--#include virtual="data-section_root.tpl" -->
+									<!--#include virtual="data-section_not-root.tpl" -->
+                                </li>
+
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        Банки/Финансы
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="" class="js-popup info-section popup">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="Банки/Финансы">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        Главная
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="/" class="js-popup info-section popup" enctype="text/plain" method="get">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="Главная">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+
+                            <ul>
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        ТЭК
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="" class="js-popup info-section popup">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="ТЭК">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        Теликом/Медиа
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="" class="js-popup info-section popup">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="Теликом/Медиа">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        В фокусе
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="" class="js-popup info-section popup">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="В фокусе">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        Индустрия
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="" class="js-popup info-section popup">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="Индустрия">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+
+                            <ul>
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        CNews/Autonews
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="" class="js-popup info-section popup">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="CNews/Autonews">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        Общество
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="" class="js-popup info-section popup">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="Общество">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        Потребрынок
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="" class="js-popup info-section popup">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="Потребрынок">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+
+                                <li>
+                                    <label class="checkbox inline">
+                                        <input type="checkbox">
+                                        Lifestyle
+                                    </label>
+                                    <i class="ico info js-show-popup"></i>
+                                    <form action="" class="js-popup info-section popup">
+
+                                        <i class="arr"></i>
+
+                                        <a href="#" class="exit icon-remove js-exit"></a>
+
+                                        <h4 class="headling">Сведения о разделе</h4>
+
+                                        <div class="description-form">
+                                            <div class="name">
+                                                <span class="title">Название раздела</span>
+                                                <input type="text" value="Lifestile">
+                                            </div>
+
+                                            <div class="nick">
+                                                <span class="title">Ник</span>
+                                                <input type="text" value="">
+                                            </div>
+
+                                            <div class="link">
+                                                <span class="title">Ссылка на проект</span>
+                                                <a href="#" class="value">http://www.rbc.ru</a>
+                                            </div>
+
+                                            <div class="meta">
+                                                <span class="title">Метаданные проекта</span>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                                <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                            </div>
+
+                                        </div> <!-- //description -->
+
+                                        <div class="button-form">
+                                            <button class="btn btn-save"> Сохранить изменения</button>
+                                            <button class="btn"> Блокировать проект</button>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+                            <i class="after-justify"></i>
+                        </div> <!-- //checkbox-block -->
+                    </div><!-- //checkbox-wrapper-->
+
+                    <div class="description">
+                        <h4 class="section">Топики в разделе / разделах: <i>В фокусе, Индустрия, Потребрынок</i></h4>
+
+                        <div class="last-up">Последнее обновление: <b>11:15</b> <i class="ico update"></i></div>
+                        <div class="position">
+                            <div class="tools">
+                                <a href="#" class="js-blocked-projects">Показать замороженные</a>
+                                <a href="#" class="js-deleted-projects">Показать удаленные</a>
+                            </div>
+                            <span>Колличество отображаемых позиций:</span>
+                            <ul class="list">
+                                <li class="active"><a href="#">20</a></li>
+                                <li><a href="#">50</a></li>
+                                <li><a href="#">100</a></li>
+                            </ul>
+                        </div>
+                    </div> <!-- //description -->
+
+
+<!-- таблица топиков -->
+                    <table class="table table-bordered top-table js-user-data-table">
+                        <tr>
+                            <td></td>
+                            <td>Заголовок <i class="ico sort"></i> </td>
+                            <td>Время / Дата <i class="ico sort-top"></i> </td>
+                            <td>ID <i class="ico sort"></i> </td>
+                        </tr>
+                        <tr>
+                            <td class="num">1</td>
+                            <td class="content-table">
+                                Россия готова к новому кризису хуже, чем в 2008
+                                <div class="tools">
+                                    <i class="ico info js-show-popup" title="Просмотреть данные по топику" data-popup="info-top"></i>
+                                    <i class="ico blocked js-blocked-data" title="Заблокировать топик"></i>
+                                    <i class="ico unlocked js-unlocked-data" title="Разблокировать топик"></i>
+                                    <i class="ico deleted js-deleted-data" title="Удалить топик"></i>
+                                </div>
+
+                                <!-- popup -->
+                                <form action="" class="js-popup info-top popup">
+
+                                    <i class="arr"></i>
+
+                                    <a href="#" class="exit icon-remove js-exit"></a>
+
+                                    <h4 class="headling">Сведения о разделе</h4>
+
+                                    <div class="description-form">
+                                        <div class="nick">
+                                            <span class="title">Ник раздела</span>
+                                            <input type="text" value="">
+                                        </div>
+
+                                        <div class="link">
+                                            <span class="title">Ссылка на проект</span>
+                                            <a href="#" class="value">awdawdwd</a>
+                                        </div>
+
+                                        <div class="id">
+                                            <span class="title">ID темы обсуждения</span>
+                                            <input type="text" name="" id="">
+                                        </div>
+
+                                        <div class="specification">
+                                            <span class="title">Краткое описание топика</span>
+                                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        </div>
+
+                                        <div class="active">
+                                            <span class="title">Активность</span>
+                                            <label class="radio active"> <input type="radio" name="active" checked> Активный </label>
+                                            <label class="radio"> <input type="radio" name="active"> Неактивный </label>
+                                        </div>
+
+                                        <div class="meta">
+                                            <span class="title">Метаданные проекта</span>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                        </div>
+
+                                    </div> <!-- //description -->
+
+                                    <div class="button-form">
+                                        <button class="btn btn-save"> Сохранить изменения</button>
+                                        <button class="btn"> Блокировать проект</button>
+                                    </div>
+                                </form>
+                                <!-- //popup -->
+                            </td>
+                            <td>11:12 01.02.2012</td>
+                            <td>24.04.2012_202527</td>
+                        </tr>
+                        <tr>
+                            <td class="num">2</td>
+                            <td class="content-table">
+                                Московские митинги
+                                <div class="tools">
+                                    <i class="ico info js-show-popup" data-popup="info-top"></i>
+                                    <i class="ico blocked js-blocked-data"></i>
+                                    <i class="ico unlocked js-unlocked-data"></i>
+                                </div>
+
+                                <!-- popup -->
+                                <form action="" class="js-popup info-top popup">
+
+                                    <i class="arr"></i>
+
+                                    <a href="#" class="exit icon-remove js-exit"></a>
+
+                                    <h4 class="headling">Сведения о разделе</h4>
+
+                                    <div class="description-form">
+                                        <div class="nick">
+                                            <span class="title">Ник раздела</span>
+                                            <input type="text" value="">
+                                        </div>
+
+                                        <div class="link">
+                                            <span class="title">Ссылка на проект</span>
+                                            <a href="#" class="value">awdawdwd</a>
+                                        </div>
+
+                                        <div class="id">
+                                            <span class="title">ID темы обсуждения</span>
+                                            <input type="text" name="" id="">
+                                        </div>
+
+                                        <div class="specification">
+                                            <span class="title">Краткое описание топика</span>
+                                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        </div>
+
+                                        <div class="active">
+                                            <span class="title">Активность</span>
+                                            <label class="radio active"> <input type="radio" name="active" checked> Активный </label>
+                                            <label class="radio"> <input type="radio" name="active"> Неактивный </label>
+                                        </div>
+
+                                        <div class="meta">
+                                            <span class="title">Метаданные проекта</span>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                        </div>
+
+                                    </div> <!-- //description -->
+
+                                    <div class="button-form">
+                                        <button class="btn btn-save"> Сохранить изменения</button>
+                                        <button class="btn"> Блокировать проект</button>
+                                    </div>
+                                </form>
+                                <!-- //popup -->
+                            </td>
+                            <td>11:12 01.02.2012</td>
+                            <td>24.04.2012_202527</td>
+                        </tr>
+                        <tr>
+                            <td class="num">3</td>
+                            <td class="content-table">
+                                На мэра саратов завели 9 уголовных дел за аферы
+                                <div class="tools">
+                                    <i class="ico info js-show-popup" data-popup="info-top"></i>
+                                    <i class="ico blocked js-blocked-data"></i>
+                                    <i class="ico unlocked js-unlocked-data"></i>
+                                </div>
+
+                                <!-- popup -->
+                                <form action="" class="js-popup info-top popup">
+
+                                    <i class="arr"></i>
+
+                                    <a href="#" class="exit icon-remove js-exit"></a>
+
+                                    <h4 class="headling">Сведения о разделе</h4>
+
+                                    <div class="description-form">
+                                        <div class="nick">
+                                            <span class="title">Ник раздела</span>
+                                            <input type="text" value="">
+                                        </div>
+
+                                        <div class="link">
+                                            <span class="title">Ссылка на проект</span>
+                                            <a href="#" class="value">awdawdwd</a>
+                                        </div>
+
+                                        <div class="id">
+                                            <span class="title">ID темы обсуждения</span>
+                                            <input type="text" name="" id="">
+                                        </div>
+
+                                        <div class="specification">
+                                            <span class="title">Краткое описание топика</span>
+                                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        </div>
+
+                                        <div class="active">
+                                            <span class="title">Активность</span>
+                                            <label class="radio active"> <input type="radio" name="active" checked> Активный </label>
+                                            <label class="radio"> <input type="radio" name="active"> Неактивный </label>
+                                        </div>
+
+                                        <div class="meta">
+                                            <span class="title">Метаданные проекта</span>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                        </div>
+
+                                    </div> <!-- //description -->
+
+                                    <div class="button-form">
+                                        <button class="btn btn-save"> Сохранить изменения</button>
+                                        <button class="btn"> Блокировать проект</button>
+                                    </div>
+                                </form>
+                                <!-- //popup -->
+                            </td>
+                            <td>11:12 01.02.2012</td>
+                            <td>24.04.2012_202527</td>
+                        </tr>
+                        <tr>
+                            <td class="num">4</td>
+                            <td class="content-table">
+                                Россия готова к новому кризису хуже, чем в 2008
+                                <div class="tools">
+                                    <i class="ico info js-show-popup" data-popup="info-top"></i>
+                                    <i class="ico blocked js-blocked-data"></i>
+                                    <i class="ico unlocked js-unlocked-data"></i>
+                                </div>
+
+                                <!-- popup -->
+<!--                                 <form action="" class="js-popup info-top popup">
+
+                                    <i class="arr"></i>
+
+                                    <a href="#" class="exit icon-remove js-exit"></a>
+
+                                    <h4 class="headling">Сведения о разделе</h4>
+
+                                    <div class="description-form">
+                                        <div class="nick">
+                                            <span class="title">Ник раздела</span>
+                                            <input type="text" value="">
+                                        </div>
+
+                                        <div class="link">
+                                            <span class="title">Ссылка на проект</span>
+                                            <a href="#" class="value">awdawdwd</a>
+                                        </div>
+
+                                        <div class="id">
+                                            <span class="title">ID темы обсуждения</span>
+                                            <input type="text" name="" id="">
+                                        </div>
+
+                                        <div class="specification">
+                                            <span class="title">Краткое описание топика</span>
+                                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        </div>
+
+                                        <div class="active">
+                                            <span class="title">Активность</span>
+                                            <label class="radio active"> <input type="radio" name="active" checked> Активный </label>
+                                            <label class="radio"> <input type="radio" name="active"> Неактивный </label>
+                                        </div>
+
+                                        <div class="meta">
+                                            <span class="title">Метаданные проекта</span>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+                                        </div>
+
+                                    </div> //description
+
+                                    <div class="button-form">
+                                        <button class="btn btn-save"> Сохранить изменения</button>
+                                        <button class="btn"> Блокировать проект</button>
+                                    </div>
+                                </form> -->
+								<!-- ---------------section_data noRoot------------------ -->
+								<div class="js-popup info-top popup popup-noRoot">
+
+								    <i class="arr"></i>
+
+								    <a href="#" class="exit icon-remove js-exit"></a>
+
+								    <h4 class="headling">Сведения о разделе</h4>
+
+								    <div class="description-form">
+								        <div class="nick">
+								            <span class="title">Ник раздела</span>
+								            <span class="value">inthefocus</span>
+								        </div>
+
+								        <div class="link">
+								            <span class="title">Ссылка на проект</span>
+								            <a href="#" class="value">awdawdwd</a>
+								        </div>
+
+								        <div class="id">
+								            <span class="title">ID темы обсуждения</span>
+								            <span class="value">24.04.2012</span>
+								        </div>
+
+								        <div class="specification">
+								            <span class="title">Краткое описание топика</span>
+								            <span class="value text">Новостная статья обитогах выборов в Египте</span>
+								        </div>
+
+								        <div class="active">
+								            <span class="title">Активность</span>
+								            <label class="radio active"> <input type="radio" name="active" checked> Активный </label>
+								            <label class="radio"> <input type="radio" name="active"> Неактивный </label>
+								        </div>
+
+								        <div class="meta">
+								            <span class="title">Метаданные проекта</span>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Древовидные комментарии </label>
+                                            <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
+								        </div>
+
+								    </div>
+								</div>
+								<!-- !---------------section_data noRoot------------------ -->
+                                <!-- //popup -->
+                            </td>
+                            <td>11:12 01.02.2012</td>
+                            <td>24.04.2012_202527</td>
+                        </tr>
+                    </table>
+
+                    <div class="pagination pagination-small pagination-centered">
+                        <ul>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">9</a></li>
+                            <li><a href="#">10</a></li>
+                        </ul>
+                    </div>
+
+                </div> <!-- //content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP -->
+    <div class="overlay js-overlay"></div>
+
+</body>
+
+<script src="external/bootstrap/js/bootstrap.min.js"></script>
+</html>
