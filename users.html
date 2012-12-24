@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>title</title>
@@ -112,116 +112,7 @@
                                     <i class="ico add js-show-popup" title="Добавить проекты для пользователя" data-popup="users-form"></i>
                                     <i class="ico deleted js-deleted-data" title="Удалить пользователя"></i>
                                 </div>
-
-<!-- ---------------users-form------------------ -->
-                                <form action="" class="js-popup users-form popup">
-                                    <i class="arr"></i>
-
-                                    <a href="#" class="exit icon-remove js-exit"></a>
-
-                                    <ol class="hint">
-                                        <li>Выберите проекты для назначения пользователю.</li>
-                                        <li>Для каждого выбранного проекта определите права пользователя.</li>
-                                    </ol>
-
-                                    <table class="table table-condensed">
-                                        <tr>
-                                            <td></td>
-                                            <td>Администратор</td>
-                                            <td>Модератор</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="rbcdaily"> RBC Daily
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="rbcdaily" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="rbcdaily" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="realty"> Недвижимость
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="realty" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="realty" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="sport"> Спорт
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="sport" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="sport" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="style"> Стиль
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="_style" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="_style" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="tata"> Tata
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="tata" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="tata" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div class="users-form__submit-wrap">
-                                    	<input type="submit" class="users-form__submit" value="Добавить"/>
-                                    </div>
-                                </form>
-<!-- !---------------users-form------------------ -->
-
+								<!--#include virtual="user-state.tpl" -->
                             </td>
                             <td>
                             	RBC Daily
@@ -282,115 +173,7 @@
                                     <i class="ico blocked js-blocked-data"></i>
                                     <i class="ico unlocked js-unlocked-data"></i>
                                 </div>
-
-<!-- ---------------users-form------------------ -->
-                                <form action="" class="js-popup users-form popup">
-                                    <i class="arr"></i>
-
-                                    <a href="#" class="exit icon-remove js-exit"></a>
-
-                                    <ol class="hint">
-                                        <li>Выберите проекты для назначения пользователю.</li>
-                                        <li>Для каждого выбранного проекта определите права пользователя.</li>
-                                    </ol>
-
-                                    <table class="table table-condensed">
-                                        <tr>
-                                            <td></td>
-                                            <td>Администратор</td>
-                                            <td>Модератор</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="rbcdaily"> RBC Daily
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="rbcdaily" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="rbcdaily" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="realty"> Недвижимость
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="realty" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="realty" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="sport"> Спорт
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="sport" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="sport" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="style"> Стиль
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="_style" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="_style" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="tata"> Tata
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="tata" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="tata" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div class="users-form__submit-wrap">
-                                    	<input type="submit" class="users-form__submit" value="Добавить"/>
-                                    </div>
-                                </form>
-<!-- !---------------users-form------------------ -->
+								<!--#include virtual="user-state.tpl" -->
                             </td>
                             <td>
                             	Недвижимость
@@ -432,115 +215,7 @@
                                     <i class="ico blocked js-blocked-data"></i>
                                     <i class="ico unlocked js-unlocked-data"></i>
                                 </div>
-
-<!-- ---------------users-form------------------ -->
-                                <form action="" class="js-popup users-form popup">
-                                    <i class="arr"></i>
-
-                                    <a href="#" class="exit icon-remove js-exit"></a>
-
-                                    <ol class="hint">
-                                        <li>Выберите проекты для назначения пользователю.</li>
-                                        <li>Для каждого выбранного проекта определите права пользователя.</li>
-                                    </ol>
-
-                                    <table class="table table-condensed">
-                                        <tr>
-                                            <td></td>
-                                            <td>Администратор</td>
-                                            <td>Модератор</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="rbcdaily"> RBC Daily
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="rbcdaily" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="rbcdaily" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="realty"> Недвижимость
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="realty" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="realty" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="sport"> Спорт
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="sport" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="sport" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="style"> Стиль
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="_style" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="_style" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="projects" value="tata"> Tata
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="tata" value="admin">
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <label class="checkbox inline">
-                                                    <input type="radio" name="tata" value="moder">
-                                                </label>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div class="users-form__submit-wrap">
-                                    	<input type="submit" class="users-form__submit" value="Добавить"/>
-                                    </div>
-                                </form>
-<!-- !---------------users-form------------------ -->
+								<!--#include virtual="user-state.tpl" -->
                             </td>
                             <td>
                             	Tata
@@ -563,35 +238,15 @@
                         </tr>
                     </table>
 
-                    <div class="pagination pagination-small pagination-centered">
-                        <ul>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">6</a></li>
-                            <li><a href="#">7</a></li>
-                            <li><a href="#">8</a></li>
-                            <li><a href="#">9</a></li>
-                            <li><a href="#">10</a></li>
-                        </ul>
-                    </div>
+					<!--#include virtual="pagination.tpl" -->
 
                 </div> <!-- //content -->
-
             </div>
-
         </div>
-
     </div>
-
 
     <!-- POPUP -->
     <div class="overlay js-overlay"></div>
-
-
+	<script src="external/bootstrap/js/bootstrap.min.js"></script>
 </body>
-
-<script src="external/bootstrap/js/bootstrap.min.js"></script>
 </html>
