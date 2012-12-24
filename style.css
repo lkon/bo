@@ -893,6 +893,7 @@ h1,h2,h3,h4,h5,h6{
 
 /* FORM CONFIRM - POPUP (BEGIN) */
 .form-confirm  {
+	display:none;
 	max-width: 300px;
 	padding: 19px 29px 29px;
 	margin: 0 auto 20px;

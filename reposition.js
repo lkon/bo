@@ -30,12 +30,18 @@ var openPopUp = (function  () {
       , $btnShow
       , $btnLock
       , $btnUnlock
+
+      , $btnDelete
+
       , $btnAccess
       , $btnHideLockProjects
       , $btnShowLockUsers
       , $userDataTable
       , INDENT_X = 37
-      , INDENT_Y = 20;
+      , INDENT_Y = 20
+
+      , $popupConfirmDelete
+      , $popupConfirmChange;
 
     function init () {
         updateVars();
@@ -49,10 +55,17 @@ var openPopUp = (function  () {
         $btnShow = $( '.js-show-popup' );
         $btnLock = $( '.js-blocked-data' );
         $btnUnlock = $( '.js-unlocked-data' );
+
+        $btnDelete = $( '.js-deleted-data' );
+
+
 		$btnAccess = $( '.js-access' );
         $btnHideLockProjects = $( '.js-hide-blocked-projects' );
         $btnShowLockUsers = $( '.js-show-blocked-users' );
         $userDataTable = $( '.js-user-data-table' );
+
+        $popupConfirmDelete = $( '.js-popup-confirm-delete' );
+        $popupConfirmChange = $( '.js-popup-confirm-change' );
     }
 
     function bindEvents () {
@@ -74,6 +87,10 @@ var openPopUp = (function  () {
 					 allowData( this );
     	          });
 
+    	$btnDelete.live( 'click', function(){
+    		deleteData( this );
+    	});
+
 		$btnAccess.live( 'click' , function(){
 			toggleAccess( this );
 		});
@@ -81,6 +98,53 @@ var openPopUp = (function  () {
 		$btnHideLockProjects.live( 'click',  hideLockedProjects);
 
 		$btnShowLockUsers.live( 'click',  showLockedUsers);
+    }
+
+    function deleteData( btn ){
+    	var first = $( btn ).closest( 'tr' ).hasClass( 'group' )
+    	  , fio
+    	  , confirm = confirmUser( $popupConfirmDelete );
+
+		if ( confirm ){
+	    	if ( first ){
+				fio = $( btn ).closest( 'td' ).hasClass( 'content-table' );
+
+				if ( fio ){
+	    			$( btn ).closest( 'tr' )
+	    			.nextAll( 'tr' ).each(function( index, el ){
+	    				if ( $( el ).hasClass( 'group' )
+	    				  || $( el ).hasClass( 'last' ) ){
+	    					return false;
+	    				} else {
+	    					 $( el ).remove();
+	    				}
+	    			})
+	    			.end().remove();
+				} else {
+
+				}
+	    	} else {
+	    		$( btn ).closest( 'tr' ).remove();
+	    	}
+		  /*плюс ajax-запрос на сервер об удалении*/
+		} else {
+			return false;
+		}
+    }
+
+    function confirmUser( $popup ){
+    	var confirm = false;
+
+		$popup.show()
+		.find( '.js-submit-yes' ).live( 'click', function(  ){
+			confirm = true;
+		})
+		.end()
+		.find( '.js-submit-no' ).live( 'click', function(  ){
+			confirm = false;
+		});
+
+		return confirm;
     }
 
     function hideLockedProjects(  ){
