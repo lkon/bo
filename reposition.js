@@ -30,18 +30,20 @@ var openPopUp = (function  () {
       , $btnShow
       , $btnLock
       , $btnUnlock
-
       , $btnDelete
+
+      , $btnDeleteAtAll
 
       , $btnAccess
       , $btnHideLockProjects
       , $btnShowLockUsers
-      , $userDataTable
+      , $topicDataTable
       , INDENT_X = 37
       , INDENT_Y = 20
 
       , $popupConfirmDelete
-      , $popupConfirmChange;
+      , $popupConfirmChange
+      ;
 
     function init () {
         updateVars();
@@ -55,14 +57,15 @@ var openPopUp = (function  () {
         $btnShow = $( '.js-show-popup' );
         $btnLock = $( '.js-blocked-data' );
         $btnUnlock = $( '.js-unlocked-data' );
+        $btnDelete = $( '.js-topic-data-table .js-deleted-data' );
 
-        $btnDelete = $( '.js-deleted-data' );
-
-
+        $btnDeleteAtAll = $( '.js-user-data-table .js-deleted-data' );
 		$btnAccess = $( '.js-access' );
+
         $btnHideLockProjects = $( '.js-hide-blocked-projects' );
         $btnShowLockUsers = $( '.js-show-blocked-users' );
-        $userDataTable = $( '.js-user-data-table' );
+
+        $topicDataTable = $( '.js-topic-data-table' );
 
         $popupConfirmDelete = $( '.js-popup-confirm-delete' );
         $popupConfirmChange = $( '.js-popup-confirm-change' );
@@ -87,68 +90,127 @@ var openPopUp = (function  () {
 					 allowData( this );
     	          });
 
-    	$btnDelete.live( 'click', function(){
-    		deleteData( this );
-    	});
-
-		$btnAccess.live( 'click' , function(){
-			toggleAccess( this );
-		});
 
 		$btnHideLockProjects.live( 'click',  hideLockedProjects);
-
 		$btnShowLockUsers.live( 'click',  showLockedUsers);
+
+    	$btnDeleteAtAll.live( 'click', confirmUser );
+		$btnAccess.live( 'click' , confirmUser );
     }
 
-    function deleteData( btn ){
-    	var first = $( btn ).closest( 'tr' ).hasClass( 'group' )
-    	  , fio
-    	  , confirm = confirmUser( $popupConfirmDelete );
 
-		if ( confirm ){
-	    	if ( first ){
-				fio = $( btn ).closest( 'td' ).hasClass( 'content-table' );
+    function confirmUser(){
 
-				if ( fio ){
-	    			$( btn ).closest( 'tr' )
-	    			.nextAll( 'tr' ).each(function( index, el ){
-	    				if ( $( el ).hasClass( 'group' )
-	    				  || $( el ).hasClass( 'last' ) ){
-	    					return false;
-	    				} else {
-	    					 $( el ).remove();
-	    				}
-	    			})
-	    			.end().remove();
-				} else {
+    	var $btn = $( this )
+    	  , $popup
+    	  , overlay = $( '.js-overlay' )
+	      , windowHeigth = $( 'body' ).height()
+	      , windowWidth = $( 'body' ).width()
+	      , confirmHandle
+    	  ;
 
-				}
-	    	} else {
-	    		$( btn ).closest( 'tr' ).remove();
-	    	}
-		  /*плюс ajax-запрос на сервер об удалении*/
-		} else {
-			return false;
-		}
-    }
+    	if ( $btn.hasClass( 'js-deleted-data' ) ){
+    		$popup = $( '.js-popup-confirm-delete' );
+    		confirmHandle = deleteData;
+    	} else if ( $btn.hasClass( 'js-access' ) ){
+    		$popup = $( '.js-popup-confirm-change' );
+    		confirmHandle = toggleAccess;
+    	}
 
-    function confirmUser( $popup ){
-    	var confirm = false;
+    	overlay.show();
 
 		$popup.show()
-		.find( '.js-submit-yes' ).live( 'click', function(  ){
-			confirm = true;
-		})
-		.end()
-		.find( '.js-submit-no' ).live( 'click', function(  ){
-			confirm = false;
-		});
+			.css({
+				 top: ( windowHeigth - $popup.height() )/2
+				,left: ( windowWidth - $popup.width() )/2
+			})
+			.find( '.js-submit-yes' ).live( 'click', function(  ){
+				overlay.hide();
+				$popup.hide();
+				confirmHandle( $btn );
+			})
+			.end()
+			.find( '.js-submit-no' ).live( 'click', function(  ){
+				overlay.hide();
+				$popup.hide();
+				return false;
+			});
+    }
 
-		return confirm;
+    function deleteData( $btn ){
+    	var isTopic = $btn.closest( 'table' ).is( '.top-table' )
+    	  , isUsers = $btn.closest( 'table' ).is( '.users-table' )
+    	  , first = $btn.closest( 'tr' ).hasClass( 'group' )
+    	  , fio
+    	  , last
+    	  , data
+    	  ;
+
+    	if ( isUsers ){
+    		if ( first ){
+				fio = $btn.closest( 'td' ).hasClass( 'content-table' );
+				if ( fio ){
+	    			$btn.closest( 'tr' )
+		    			.nextUntil(".group, .last").remove()
+		    			.end().remove();
+
+	    			renumeration();
+				} else {
+					last = ( $btn.closest( 'tr' ).next( 'tr' ).hasClass( 'group' ) || $btn.closest( 'tr' ).next( 'tr' ).hasClass( 'last' ) ) ? true : false;
+					data = $btn.closest( 'tr' ).next( 'tr' ).children( 'td' );
+					if ( last ){
+					  	$btn.closest( 'td' ).empty()
+					  	    .next( 'td' ).empty();
+					} else {
+						$btn.closest( 'tr' ).children( 'td' ).each(function( index, el ){
+							if ( index !== 0
+							  && index !== 1){
+								$(el).html( $( data[ index ] ).html() );
+							}
+						})
+						.end().next( 'tr' ).remove();
+					}
+				}
+	    	} else {
+	    		$btn.closest( 'tr' ).remove();
+	    	}
+	  		/*плюс ajax-запрос на сервер об удалении*/
+		} else if ( isTopic ){
+
+		}
+
+    }
+
+    function toggleAccess( $btn ){
+    	var admin = $( '#admin' ).html()
+    	  , moder = $( '#moder' ).html()
+    	  ;
+
+    	$btn.die( 'click' );
+
+		if ( $btn.hasClass( 'high' ) ){
+			$btn.closest( 'td' ).html( moder )
+			    .find( '.ico' ).addClass( 'js-access' );
+
+		} else if ( $btn.hasClass( 'low' ) ){
+			$btn.closest( 'td' ).html( admin )
+			    .find( '.ico' ).addClass( 'js-access' );
+		}
+		/*плюс ajax-запрос на сервер об изменении статуса*/
+    }
+
+    function renumeration(){
+    	var $cells = $( '.num' )
+    	  , len = $cells.length
+    	  ;
+
+    	for (var i = 0; i < len; i++) {
+    		$( $cells.get(i) ).text( i + 1 );
+    	}
     }
 
     function hideLockedProjects(  ){
-    	$userDataTable.find( 'td.data-blocked' ).closest( 'tr' ).each( function( index, el ){
+    	$topicDataTable.find( 'td.data-blocked' ).closest( 'tr' ).each( function( index, el ){
     		if ( $( el ).hasClass( 'group' ) ){
 
     		} else {
@@ -158,7 +220,7 @@ var openPopUp = (function  () {
     }
 
     function showLockedUsers (  ){
-		$userDataTable.find( 'td.data-blocked' ).closest( 'tr' ).each( function( index, el ){
+		$topicDataTable.find( 'td.data-blocked' ).closest( 'tr' ).each( function( index, el ){
     		if ( $( el ).hasClass( 'group' ) ){
 
     		} else {
@@ -266,22 +328,6 @@ var openPopUp = (function  () {
 		$btnUnlock.hide();
     }
 
-    function toggleAccess( btnAccess ){
-    	var ADMIN = 'Администратор'
-    	  , MODERATOR ='Модератор'
-    	  , $btnAccess = $( btnAccess );
-
-		if ( $btnAccess.hasClass( 'high' ) ){
-			$btnAccess.removeClass( 'high' )
-					  .addClass( 'low' )
-					  .closest('td').get(0).firstChild.data = MODERATOR;
-
-		} else if ( $btnAccess.hasClass( 'low' ) ){
-			$btnAccess.removeClass( 'low' )
-					  .addClass( 'high' )
-					  .closest('td').get(0).firstChild.data = ADMIN;
-		}
-    }
     /**
      * Проводит измерение пространства для правильного отображения popup
      * @param  {Element} ob - i.info.js-show-popup

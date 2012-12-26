@@ -534,10 +534,22 @@ h1,h2,h3,h4,h5,h6{
 	padding-left:20px !important;
 }
 
+.table-bordered td.num{
+	width:5%;
+}
+.table-bordered td.content-table{
+	width:50%;
+}
+.table-bordered td.content-table + td{
+	width:25%;
+}
+.table-bordered td.content-table + td + td{
+	width:20%;
+}
+
 .top-table td{
     cursor: pointer;
 }
-
 .users-table .group{
     cursor: pointer;
 }
@@ -894,6 +906,7 @@ h1,h2,h3,h4,h5,h6{
 /* FORM CONFIRM - POPUP (BEGIN) */
 .form-confirm  {
 	display:none;
+	position:absolute;
 	max-width: 300px;
 	padding: 19px 29px 29px;
 	margin: 0 auto 20px;

@@ -4,7 +4,7 @@
     	Вы уверены,
     	<br/>что хотите удалить
     	<br/>проект / пользователя?</h4>
-    <button class="btn btn-small btn-primary js-submit-yes" type="submit">Да</button>
-    <button class="btn btn-small btn-primary js-submit-no" type="submit">Нет</button>
+    <button class="btn btn-small btn-primary js-submit-yes" type="button">Да</button>
+    <button class="btn btn-small btn-primary js-submit-no" type="button">Нет</button>
 </form>
 <!-- CONFIRM TO DELETE PROJECT/USER  (END) -->

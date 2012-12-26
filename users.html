@@ -203,9 +203,21 @@
     </div>
 
     <!-- POPUP -->
+    <div class="overlay js-overlay"></div>
     <!--#include virtual="project-delete-confirm.tpl" -->
     <!--#include virtual="state-change-confirm.tpl" -->
-    <div class="overlay js-overlay"></div>
 	<script src="external/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/template" id="admin">
+		Администратор
+		<div class="tools">
+    		<i class="ico high" title="Изменить статус пользователя"></i>
+		</div>
+	</script>
+	<script type="text/template" id="moder">
+		Модератор
+		<div class="tools">
+    		<i class="ico low" title="Изменить статус пользователя"></i>
+		</div>
+	</script>
 </body>
 </html>
