@@ -62,8 +62,8 @@ var openPopUp = (function  () {
         $btnDeleteAtAll = $( '.js-user-data-table .js-deleted-data' );
 		$btnAccess = $( '.js-access' );
 
-        $btnHideLockProjects = $( '.js-hide-blocked-projects' );
-        $btnShowLockUsers = $( '.js-show-blocked-users' );
+        $btnShowBlockedTopics = $( '.js-show-blocked-topics' );
+        $btnShowDeletedTopics = $( '.js-show-deleted-topics' );
 
         $topicDataTable = $( '.js-topic-data-table' );
 
@@ -81,25 +81,64 @@ var openPopUp = (function  () {
         $exit.live( 'click', hide);
         $overlay.live( 'click', hide);
 
-        $btnLock.live( 'click', function(){
-			banData( this );
-        });
 
+    	$btnDelete.live( 'click', deleteTopic );
+        $btnLock.live( 'click', blockTopic );
     	$btnUnlock.hide()
-    	          .live( 'click', function(){
-					 allowData( this );
-    	          });
+    	          .live( 'click', unlockTopic );
 
-
-		$btnHideLockProjects.live( 'click',  hideLockedProjects);
-		$btnShowLockUsers.live( 'click',  showLockedUsers);
+		$btnShowBlockedTopics.live( 'click',  ShowBlockedTopics);
+		$btnShowDeletedTopics.live( 'click',  ShowDeletedTopics);
 
     	$btnDeleteAtAll.live( 'click', confirmUser );
 		$btnAccess.live( 'click' , confirmUser );
     }
 
+    function deleteTopic(){
+    	$( this ).closest( 'tr' ).addClass( 'data-deleted' ).hide()
+	    						.find( '.num' ).removeClass( 'num' ).text('')
+	    	                    .end().find( '.tools' ).remove();
+		renumeration();
+    }
 
-    function confirmUser(){
+    function blockTopic(){
+    	$( this ).hide()
+		    	.siblings().each( function( i, el ){
+					if( $( el ).hasClass( 'js-show-popup' ) ){
+						$( el ).hide();
+					} else if ( $( el ).hasClass( 'js-unlocked-data' ) ){
+						$( el ).show();
+					}
+				})
+				.end().closest( 'tr' ).addClass( 'data-blocked' ).hide()
+		    						  .find( '.num' ).removeClass( 'num' ).text('');
+		renumeration();
+    }
+
+    function unlockTopic (){
+    	$( this ).hide()
+    			.siblings().each(function( i, el ){
+					if( $( el ).hasClass( 'js-show-popup' ) ){
+						$( el ).show();
+					} else if ( $( el ).hasClass( 'js-blocked-data' ) ){
+						$( el ).show();
+					}
+				})
+				.end().closest( 'tr' ).removeClass( 'data-blocked' )
+				.find( 'td:first' ).addClass( 'num' );
+
+		renumeration();
+    }
+
+    function ShowBlockedTopics (){
+		$topicDataTable.find( '.data-blocked' ).show();
+    }
+
+    function ShowDeletedTopics (){
+		$topicDataTable.find( '.data-deleted' ).show();
+    }
+
+    function confirmUser (){
 
     	var $btn = $( this )
     	  , $popup
@@ -111,7 +150,7 @@ var openPopUp = (function  () {
 
     	if ( $btn.hasClass( 'js-deleted-data' ) ){
     		$popup = $( '.js-popup-confirm-delete' );
-    		confirmHandle = deleteData;
+    		confirmHandle = deleteDataAtAll;
     	} else if ( $btn.hasClass( 'js-access' ) ){
     		$popup = $( '.js-popup-confirm-change' );
     		confirmHandle = toggleAccess;
@@ -137,51 +176,44 @@ var openPopUp = (function  () {
 			});
     }
 
-    function deleteData( $btn ){
-    	var isTopic = $btn.closest( 'table' ).is( '.top-table' )
-    	  , isUsers = $btn.closest( 'table' ).is( '.users-table' )
-    	  , first = $btn.closest( 'tr' ).hasClass( 'group' )
+    function deleteDataAtAll ( $btn ){
+    	var first = $btn.closest( 'tr' ).hasClass( 'group' )
     	  , fio
     	  , last
     	  , data
     	  ;
 
-    	if ( isUsers ){
-    		if ( first ){
-				fio = $btn.closest( 'td' ).hasClass( 'content-table' );
-				if ( fio ){
-	    			$btn.closest( 'tr' )
-		    			.nextUntil(".group, .last").remove()
-		    			.end().remove();
+		if ( first ){
+			fio = $btn.closest( 'td' ).hasClass( 'content-table' );
+			if ( fio ){
+    			$btn.closest( 'tr' )
+	    			.nextUntil(".group, .last").remove()
+	    			.end().remove();
 
-	    			renumeration();
+    			renumeration();
+			} else {
+				last = ( $btn.closest( 'tr' ).next( 'tr' ).hasClass( 'group' ) || $btn.closest( 'tr' ).next( 'tr' ).hasClass( 'last' ) ) ? true : false;
+				data = $btn.closest( 'tr' ).next( 'tr' ).children( 'td' );
+				if ( last ){
+				  	$btn.closest( 'td' ).empty()
+				  	    .next( 'td' ).empty();
 				} else {
-					last = ( $btn.closest( 'tr' ).next( 'tr' ).hasClass( 'group' ) || $btn.closest( 'tr' ).next( 'tr' ).hasClass( 'last' ) ) ? true : false;
-					data = $btn.closest( 'tr' ).next( 'tr' ).children( 'td' );
-					if ( last ){
-					  	$btn.closest( 'td' ).empty()
-					  	    .next( 'td' ).empty();
-					} else {
-						$btn.closest( 'tr' ).children( 'td' ).each(function( index, el ){
-							if ( index !== 0
-							  && index !== 1){
-								$(el).html( $( data[ index ] ).html() );
-							}
-						})
-						.end().next( 'tr' ).remove();
-					}
+					$btn.closest( 'tr' ).children( 'td' ).each(function( index, el ){
+						if ( index !== 0
+						  && index !== 1){
+							$(el).html( $( data[ index ] ).html() );
+						}
+					})
+					.end().next( 'tr' ).remove();
 				}
-	    	} else {
-	    		$btn.closest( 'tr' ).remove();
-	    	}
-	  		/*плюс ajax-запрос на сервер об удалении*/
-		} else if ( isTopic ){
-
-		}
-
+			}
+    	} else {
+    		$btn.closest( 'tr' ).remove();
+    	}
+  		/*плюс ajax-запрос на сервер об удалении*/
     }
 
-    function toggleAccess( $btn ){
+    function toggleAccess ( $btn ){
     	var admin = $( '#admin' ).html()
     	  , moder = $( '#moder' ).html()
     	  ;
@@ -199,7 +231,7 @@ var openPopUp = (function  () {
 		/*плюс ajax-запрос на сервер об изменении статуса*/
     }
 
-    function renumeration(){
+    function renumeration (){
     	var $cells = $( '.num' )
     	  , len = $cells.length
     	  ;
@@ -209,124 +241,9 @@ var openPopUp = (function  () {
     	}
     }
 
-    function hideLockedProjects(  ){
-    	$topicDataTable.find( 'td.data-blocked' ).closest( 'tr' ).each( function( index, el ){
-    		if ( $( el ).hasClass( 'group' ) ){
-
-    		} else {
-    			$( el ).hide();
-    		}
-    	});
-    }
-
-    function showLockedUsers (  ){
-		$topicDataTable.find( 'td.data-blocked' ).closest( 'tr' ).each( function( index, el ){
-    		if ( $( el ).hasClass( 'group' ) ){
-
-    		} else {
-    			$( el ).show();
-    		}
-    	});
-    }
-
-    function banData ( btnLock ){
-    	var $btnLock = $( btnLock )
-    	  , groupEnd = false;
-
-    	$btnLock.siblings().each(function( i, el ){
-			if( $( el ).hasClass( 'js-show-popup' ) ){
-				$( el ).hide();
-			} else if ( $( el ).hasClass( 'js-unlocked-data' ) ){
-				$( el ).show();
-			}
-		})
-		.end().closest( 'td' ).addClass( 'data-blocked' );
 
 
-    	if ( $btnLock.closest( 'td' ).hasClass( 'content-table' )
-    	  && $btnLock.closest( 'tr' ).hasClass( 'group' ) ){
 
-			$btnLock.closest( 'tr' ).addClass( 'data-blocked' )
-					.nextAll( 'tr' ).each(function( i, el ){
-
-						if ( !$( el ).hasClass( 'group' )
-						  && !$( el ).hasClass( 'last' )
-						  && !groupEnd){
-
-							$( el ).addClass( 'data-blocked' )
-							       .find( '.tools' ).addClass( 'tools-blocked' );
-						} else {
-							groupEnd = true;
-						}
-					})
-					.end()
-					.find( '.tools' ).each(function( i, el ){
-						if ( !$( el ).closest( 'td' ).hasClass( 'content-table' ) ){
-							$( el ).addClass( 'tools-blocked' );
-						}
-					});
-
-    	} else {
-			$btnLock.closest( 'td' ).siblings().each( function( i, el ){
-				if( !$( el ).hasClass( 'content-table' )
-				 && !$( el ).hasClass( 'num' )){
-					$( el ).addClass( 'data-blocked' )
-					       .find( '.tools' ).addClass( 'tools-blocked' );
-				}
-			});
-    	}
-
-		$btnLock.hide();
-    }
-
-    function allowData ( btnUnlock ){
-    	var $btnUnlock = $( btnUnlock )
-    	  , groupEnd = false;
-
-    	$btnUnlock.siblings().each(function( i, el ){
-			if( $( el ).hasClass( 'js-show-popup' ) ){
-				$( el ).show();
-			} else if ( $( el ).hasClass( 'js-blocked-data' ) ){
-				$( el ).show();
-			}
-		})
-		.end().closest( 'td' ).removeClass( 'data-blocked' );
-
-		if ( $btnUnlock.closest( 'td' ).hasClass( 'content-table' )
-    	  && $btnUnlock.closest( 'tr' ).hasClass( 'group' ) ){
-
-			$btnUnlock.closest( 'tr' ).removeClass( 'data-blocked' )
-					.nextAll( 'tr' ).each(function( i, el ){
-
-						if ( !$( el ).hasClass( 'group' )
-						  && !$( el ).hasClass( 'last' )
-						  && !groupEnd){
-
-							$( el ).removeClass( 'data-blocked' )
-							       .find( '.tools' ).removeClass( 'tools-blocked' );
-						} else {
-							groupEnd = true;
-						}
-					})
-					.end()
-					.find( '.tools' ).each(function( i, el ){
-						if ( !$( el ).closest( 'td' ).hasClass( 'content-table' ) ){
-							$( el ).removeClass( 'tools-blocked' );
-						}
-					});
-
-    	} else {
-			$btnUnlock.closest( 'td' ).siblings().each( function( i, el ){
-				if( !$( el ).hasClass( 'content-table' )
-				 && !$( el ).hasClass( 'num' )){
-					$( el ).removeClass( 'data-blocked' )
-					       .find( '.tools' ).removeClass( 'tools-blocked' );
-				}
-			});
-    	}
-
-		$btnUnlock.hide();
-    }
 
     /**
      * Проводит измерение пространства для правильного отображения popup

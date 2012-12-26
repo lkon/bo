@@ -517,6 +517,10 @@ h1,h2,h3,h4,h5,h6{
 	text-decoration:line-through;
 	color:#bcbcbc;
 }
+.table-bordered .data-deleted{
+	text-decoration:line-through;
+	color:#f00;
+}
 
 .table-bordered .table-condensed td{
 	text-align:center;
@@ -547,9 +551,13 @@ h1,h2,h3,h4,h5,h6{
 	width:20%;
 }
 
-.top-table td{
+.top-table .tools{
     cursor: pointer;
 }
+.top-table tr.data-deleted{
+    cursor:default;
+}
+
 .users-table .group{
     cursor: pointer;
 }
@@ -583,13 +591,13 @@ h1,h2,h3,h4,h5,h6{
             background: url('images/sprite.png') no-repeat 0 -60px;
         }
     .ico.blocked{
-        background: url('images/sprite.png') no-repeat 0 -45px;
+        background: url('external/bootstrap/img/glyphicons-halflings.png') no-repeat -215px -95px;
     }
     .ico.unlocked{
         background: url('images/sprite.png') no-repeat 0 -23px;
     }
     .ico.deleted{
-    	background: url('external/bootstrap/img/glyphicons-halflings.png') no-repeat 100% 0;
+    	background: url('external/bootstrap/img/glyphicons-halflings.png') no-repeat -455px 1px;
     }
     .ico.repaired{
         background: url('external/bootstrap/img/glyphicons-halflings.png') no-repeat 0 -23px;
