@@ -707,36 +707,13 @@ h1,h2,h3,h4,h5,h6{
 .popup.info-section,
 .popup.info-top,
 .popup.users-form{
-    position: absolute;
+    position: fixed;
     background: #fff;
     width: 520px;
     padding: 25px 20px;
     border-radius: 5px;
 }
 
-.popup .arr{
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    position: absolute;
-}
-
-.popup .arr-up{
-	top: -20px;
-    border-bottom: 20px solid white;
-}
-
-.popup .arr-down{
-	bottom:-20px;
-    border-top: 20px solid white;
-}
-.popup .arr-front{
-	left:37px;
-}
-.popup .arr-back{
-	right:37px;
-}
 .popup .exit{
     position: absolute;
     top: 10px;

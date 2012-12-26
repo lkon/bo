@@ -74,8 +74,8 @@ var openPopUp = (function  () {
     function bindEvents () {
 
         $btnShow.live( 'click', function(){
-        	var res = measure( this );
-	    	show( res.popup, res.pos );
+        	var res = positioning( this );
+	    	show( res.$popup, res.pos );
         });
 
         $exit.live( 'click', hide);
@@ -241,132 +241,57 @@ var openPopUp = (function  () {
     	}
     }
 
-
-
-
-
     /**
      * Проводит измерение пространства для правильного отображения popup
      * @param  {Element} ob - i.info.js-show-popup
      * @private
      */
-    function measure (ob){
-		var isTopic = $(ob).closest('tr').length
-	      , popupName = $(ob).attr('data-popup') || false
+	function positioning ( ob ){
+		var isTopic = $( ob ).closest( 'tr' ).length
+	      , popupName = $( ob ).attr( 'data-popup' ) || false
 	      , $popup
-	      , $arr
 	      , popupHeight
 	      , popupWidth
 	      , windowHeigth = $( 'body' ).height()
 	      , windowWidth = $( 'body' ).width()
 	      , MOBILE_WIDTH = 600
-	      , MOBILE_HEIGHT = 400
-	      , dX
-	      , dY
-	      , INDENT = 50
+	      , MOBILE_HEIGHT = 480
 	      , pos = {}
 	      , updateLocalVar = function( popupObject ){
-	          	$arr = popupObject.find('.arr');
 	            popupHeight = popupObject.height();
 	            popupWidth = popupObject.width();
-	            dX = Math.floor( windowWidth - $(ob).offset().left - popupWidth - INDENT );
-	            dY = Math.floor( windowHeigth - $(ob).offset().top - popupHeight - INDENT );
 	      };
 
 	    if ( isTopic ) {
 	   		$popup = $(ob).closest('td').find('.' + popupName);
-	   		updateLocalVar( $popup );
-
-	        if ( windowWidth < MOBILE_WIDTH
-			  || windowHeigth < MOBILE_HEIGHT
-			  || ($(ob).offset().left + INDENT) < popupWidth
-			){
-				pos = {
-					top: ( windowHeigth - popupHeight ) / 2 - INDENT_Y,
-					left: ( windowWidth - popupWidth ) / 2 + INDENT_X
-				};
-		    } else if ( dX > 0 ){
-				if ( dY > 0 ){
-					$arr.addClass( 'arr-up arr-front' );
-					pos = {
-	                      top: $(ob).position().top + $(ob).height() + $(this).parent().position().top
-	                    , left: $(this).position().left + $(this).parent().position().left
-	                };
-				} else{
-					$arr.addClass( 'arr-down arr-front' );
-					pos = {
-	                      top: - ( $(ob).position().top + $(ob).height() + $(ob).parent().position().top + popupHeight + INDENT )
-	                    , left: $(ob).position().left + $(ob).parent().position().left
-	                };
-				}
-			} else {
-				if ( dY > 0 ){
-					$arr.addClass( 'arr-up arr-back' );
-					pos = {
-	                      top: $(ob).position().top + $(ob).height() + $(ob).parent().position().top
-	                    , left: ( $(ob).position().left + $(ob).parent().position().left + INDENT ) - popupWidth
-	                };
-				} else{
-					$arr.addClass( 'arr-down arr-back' );
-					pos = {
-	                      top: - ( $(ob).position().top + $(ob).height() + $(ob).parent().position().top/* + popupHeight + INDENT*/ )
-	                    , left: ( $(ob).position().left + $(ob).parent().position().left + INDENT )  - popupWidth
-	                };
-				}
-			}
-
 	    } else {
 	   		$popup = $(ob).siblings('.js-popup');
-	        updateLocalVar( $popup );
-
-	        if ( windowWidth < MOBILE_WIDTH
-			  || windowHeigth < MOBILE_HEIGHT
-			  || ($(ob).offset().left + INDENT) < popupWidth
-			){
-				pos = {
-					top: ( windowHeigth - popupHeight ) / 2 - INDENT_Y,
-					left: ( windowWidth - popupWidth ) / 2 + INDENT_X
-				};
-
-		    } else if ( dX > 0 ){
-				if ( dY > 0 ){
-					$arr.addClass( 'arr-up arr-front' );
-					pos = {
-	                      top: $(ob).offset().top + $(ob).height()
-	            		, left: $(ob).offset().left
-	                };
-				} else{
-					$arr.addClass( 'arr-down arr-front' );
-					pos = {
-	                      top: - ( $(ob).offset().top + $(ob).height() + popupHeight + INDENT )
-	            		, left: $(ob).offset().left
-	                };
-				}
-			} else {
-				if ( dY > 0 ){
-					$arr.addClass( 'arr-up arr-back' );
-					pos = {
-	                      top: $(ob).offset().top + $(ob).height()
-	            		, left: ( $(ob).offset().left + INDENT ) - popupWidth
-	                };
-				} else{
-					$arr.addClass( 'arr-up arr-back' );
-					pos = {
-	                      top:  $(ob).offset().top + $(ob).height() /* + popupHeight + INDENT */
-	            		, left: ( $(ob).offset().left + INDENT ) - popupWidth
-	                };
-				}
-			}
 	    }
+
+	    updateLocalVar( $popup );
+
+        if ( windowWidth < MOBILE_WIDTH
+		  || windowHeigth < MOBILE_HEIGHT ){
+			  pos = {
+			  	top: 25
+			  	,right: 5
+			  	,left: 5
+			  };
+		} else {
+			pos = {
+				left: ( windowWidth - popupWidth )/2
+				,top: ( windowHeigth - popupHeight )/2
+			};
+		}
 
 	    $(ob).addClass('active');
 	    $(ob).parent().addClass('active');
 
 	    return {
-	    	  popup: $popup
+	    	  $popup: $popup
 	    	, pos: pos
 	    };
-    }
+	}
 
     /**
      * Показывает переданный popup и скрывает все остальные
@@ -376,11 +301,20 @@ var openPopUp = (function  () {
     function show ( $popup, pos ) {
         $overlay.show();
 
-        $popup.css({
-              top: pos.top + INDENT_Y
-            , left: pos.left - INDENT_X
-        }).show();
-
+        if ( pos.right ){
+	        $popup.css({
+	              'top': pos.top
+	            , 'right': pos.right
+	            , 'left': pos.left
+	            , 'width': 'auto'
+	        }).show()
+	        .find( '.description-form' ).css( 'width', 'auto' );
+        } else {
+	        $popup.css({
+	              'top': pos.top
+	            , 'left': pos.left
+	        }).show();
+        }
         $popup.addClass('active');
     }
 
@@ -394,7 +328,6 @@ var openPopUp = (function  () {
         $overlay.hide();
         $popup.hide();
         $btnShow.add( '.tools' ).removeClass('active');
-
     }
 
     return{
