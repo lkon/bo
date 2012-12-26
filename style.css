@@ -88,28 +88,34 @@ h1,h2,h3,h4,h5,h6{
 	.log-user{
 
 	}
-	.login{
+	.log-state .login{
+		position:relative;
+		bottom:-2px;
 		display:inline-block;
 		*display:inline;
 		zoom:1;
 		width:14px;
 		height:14px;
+		margin:0 10px;
 		background:url("external/bootstrap/img/glyphicons-halflings-white.png") -168px 0 no-repeat;
 	}
-	.login:hover{
+	.log-state a.login:hover{
 		background:url("external/bootstrap/img/glyphicons-halflings.png") -168px 0 no-repeat;
 		background-color:transparent !important;
 
 	}
-	.logout{
+	.log-state .logout{
+		position:relative;
+		bottom:2px;
 		display:inline-block;
 		*display:inline;
 		zoom:1;
 		width:12px;
 		height:9px;
+		margin:0 10px;
 		background:url("external/bootstrap/img/glyphicons-halflings-white.png") -337px -97px no-repeat;
 	}
-	.logout:hover{
+	.log-state a.logout:hover{
 		background:url("external/bootstrap/img/glyphicons-halflings.png") -337px -97px no-repeat;
 		background-color:transparent !important;
 	}
@@ -905,8 +911,13 @@ h1,h2,h3,h4,h5,h6{
 	   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
 	        box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
-.form-confirm__heading{
-  margin-bottom: 10px;
-}
+	.form-confirm__heading{
+	  margin-bottom: 10px;
+	}
+	.form-confirm .btn{
+		padding-left:15px;
+		padding-right:15px;
+		margin:0 10px;
+	}
 
 /* FORM CONFIRM - POPUP  (END) */
