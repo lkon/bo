@@ -26,6 +26,7 @@ var openPopUp = (function  () {
       , $popupWrap
       , $exit
       , $overlay
+
       , $ico
       , $btnShow
       , $btnLock
@@ -33,16 +34,17 @@ var openPopUp = (function  () {
       , $btnDelete
 
       , $btnDeleteAtAll
-
       , $btnAccess
-      , $btnHideLockProjects
-      , $btnShowLockUsers
+
+      , $btnToggleBlockedTopics
+      , $btnToggleDeletedTopics
+
       , $topicDataTable
-      , INDENT_X = 37
-      , INDENT_Y = 20
 
       , $popupConfirmDelete
       , $popupConfirmChange
+      , SHOW = 'Показать'
+      , HIDE = 'Скрыть'
       ;
 
     function init () {
@@ -62,8 +64,8 @@ var openPopUp = (function  () {
         $btnDeleteAtAll = $( '.js-user-data-table .js-deleted-data' );
 		$btnAccess = $( '.js-access' );
 
-        $btnShowBlockedTopics = $( '.js-show-blocked-topics' );
-        $btnShowDeletedTopics = $( '.js-show-deleted-topics' );
+        $btnToggleBlockedTopics = $( '.js-toggle-blocked-topics' );
+        $btnToggleDeletedTopics = $( '.js-toggle-deleted-topics' );
 
         $topicDataTable = $( '.js-topic-data-table' );
 
@@ -74,12 +76,12 @@ var openPopUp = (function  () {
     function bindEvents () {
 
         $btnShow.live( 'click', function(){
-        	var res = positioning( this );
-	    	show( res.$popup, res.pos );
+        	var data = positioning( this );
+	    	showPopup( data.$popup, data.pos );
         });
 
-        $exit.live( 'click', hide);
-        $overlay.live( 'click', hide);
+        $exit.live( 'click', hidePopup );
+        $overlay.live( 'click', hidePopup );
 
 
     	$btnDelete.live( 'click', deleteTopic );
@@ -87,8 +89,10 @@ var openPopUp = (function  () {
     	$btnUnlock.hide()
     	          .live( 'click', unlockTopic );
 
-		$btnShowBlockedTopics.live( 'click',  ShowBlockedTopics);
-		$btnShowDeletedTopics.live( 'click',  ShowDeletedTopics);
+		$btnToggleBlockedTopics.toggle( showBlockedTopics, hideBlockedTopics )
+								.hide();
+		$btnToggleDeletedTopics.toggle( showDeletedTopics, hideDeletedTopics )
+								.hide();
 
     	$btnDeleteAtAll.live( 'click', confirmUser );
 		$btnAccess.live( 'click' , confirmUser );
@@ -99,6 +103,8 @@ var openPopUp = (function  () {
 	    						.find( '.num' ).removeClass( 'num' ).text('')
 	    	                    .end().find( '.tools' ).remove();
 		renumeration();
+		$btnToggleDeletedTopics.show()
+								.find( '.action' ).text( SHOW );
     }
 
     function blockTopic(){
@@ -113,9 +119,13 @@ var openPopUp = (function  () {
 				.end().closest( 'tr' ).addClass( 'data-blocked' ).hide()
 		    						  .find( '.num' ).removeClass( 'num' ).text('');
 		renumeration();
+		$btnToggleBlockedTopics.show()
+								.find( '.action' ).text( SHOW );
     }
 
     function unlockTopic (){
+    	var blockedNotExist;
+
     	$( this ).hide()
     			.siblings().each(function( i, el ){
 					if( $( el ).hasClass( 'js-show-popup' ) ){
@@ -127,15 +137,40 @@ var openPopUp = (function  () {
 				.end().closest( 'tr' ).removeClass( 'data-blocked' )
 				.find( 'td:first' ).addClass( 'num' );
 
+		blockedNotExist = $topicDataTable.find( '.data-blocked' ).length;
+
+		if ( !blockedNotExist ){
+			$btnToggleBlockedTopics.hide()
+									.find( '.action' ).text( SHOW );
+		}
+
 		renumeration();
     }
 
-    function ShowBlockedTopics (){
-		$topicDataTable.find( '.data-blocked' ).show();
+    function showBlockedTopics (){
+		var blocked = $topicDataTable.find( '.data-blocked' );
+
+		if ( blocked.length ){
+			blocked.show();
+			$btnToggleBlockedTopics.find( '.action' ).text( HIDE );
+		} else {
+			return false;
+		}
     }
 
-    function ShowDeletedTopics (){
+	function hideBlockedTopics (){
+		$topicDataTable.find( '.data-blocked' ).hide();
+		$btnToggleBlockedTopics.find( '.action' ).text( SHOW );
+    }
+
+    function showDeletedTopics (){
 		$topicDataTable.find( '.data-deleted' ).show();
+		$btnToggleDeletedTopics.find( '.action' ).text( HIDE );
+    }
+
+    function hideDeletedTopics (){
+		$topicDataTable.find( '.data-deleted' ).hide();
+		$btnToggleDeletedTopics.find( '.action' ).text( SHOW );
     }
 
     function confirmUser (){
@@ -298,7 +333,7 @@ var openPopUp = (function  () {
      * @param popup {Jquery}
      * @private
      */
-    function show ( $popup, pos ) {
+    function showPopup ( $popup, pos ) {
         $overlay.show();
 
         if ( pos.right ){
@@ -322,7 +357,7 @@ var openPopUp = (function  () {
      * Скрывает переданный popup и скрывает все остальные
      * @private
      */
-    function hide (e) {
+    function hidePopup (e) {
         e.preventDefault();
 
         $overlay.hide();
