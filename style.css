@@ -451,15 +451,15 @@ h1,h2,h3,h4,h5,h6{
 
 }
 
-.table-bordered tr:first-child{
+.table-bordered thead tr{
     font-weight:bold;
     background: #f5f5f5;
 }
-.table-bordered tr:first-child .ico{
+.table-bordered thead tr .ico{
     float: right;
 }
 
-.table-bordered tr:first-child td{
+.table-bordered thead tr td{
     text-align: center;
 }
 

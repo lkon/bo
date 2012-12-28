@@ -4,7 +4,8 @@ jQuery(document).ready(function($) {
 
     openPopUp.init();
 
-    topNav.init();
+    /*topNav.init();*/
+	$( '.js-topic-data-table' ).tablesorter();
 
 
     var Datepicker = Datepicker || {};
@@ -181,7 +182,7 @@ var openPopUp = (function  () {
 				  , whs2 = topic2.indexOf(' ')
 				  , word2 = topic2.slice( 0, whs2 )
 				  ;*/
-			console.log(dataArray);
+
 			var re = /(?:^\n\s+)(.+)/
 			  , ar = []
 			  ;
@@ -190,7 +191,7 @@ var openPopUp = (function  () {
 			  		ar[ index ] = dataArray[ index ].firstChild.data.replace(re, '$1');
 			  }
 
-			console.log(ar);
+
 
 			ar.sort();
 

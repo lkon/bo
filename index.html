@@ -13,9 +13,11 @@
     <link rel="stylesheet" href="style.css" />
 
     <script src="external/jquery.js"></script>
+    <script src="external/tagsinput/jquery.tagsinput.min.js"></script>
+    <script src="external/jquery.tablesorter.min.js"></script>
+
     <script src="external/datepicker/js/bootstrap-datepicker.js"></script>
 
-    <script src="external/tagsinput/jquery.tagsinput.min.js"></script>
     <script src="reposition.js"></script>
 </head>
 <body>
@@ -242,16 +244,19 @@
 
 <!-- таблица топиков -->
                     <table class="table table-bordered top-table js-topic-data-table">
+                    	<thead>
                         <tr>
-                            <td></td>
-                            <td>Заголовок 		<i class="ico sort-top js-sort"></i> </td>
-                            <td>Время / Дата 	<i class="ico sort-top js-sort"></i> </td>
-                            <td>ID 				<i class="ico sort-top js-sort"></i> </td>
+                            <th></th>
+                            <th>Заголовок 		<i class="ico sort-top js-sort"></i> </th>
+                            <th>Время / Дата 	<i class="ico sort-top js-sort"></i> </th>
+                            <th>ID 				<i class="ico sort-top js-sort"></i> </th>
                         </tr>
+                        </thead>
+                        <tbody>
                         <tr>
                             <td class="num">1</td>
                             <td class="content-table">
-                                MРоссия готова к новому кризису хуже, чем в 2008
+                                Россия готова к новому кризису хуже, чем в 2008
 								<!--#include virtual="topic_tools.tpl" -->
 								<!--#include virtual="data-topic_root.tpl" -->
 								<!--#include virtual="data-topic_not-root.tpl" -->
@@ -262,7 +267,7 @@
                         <tr>
                             <td class="num">2</td>
                             <td class="content-table">
-                                ГМосковские митинги
+                                Московские митинги
 								<!--#include virtual="topic_tools.tpl" -->
 								<!--#include virtual="data-topic_root.tpl" -->
 								<!--#include virtual="data-topic_not-root.tpl" -->
@@ -273,7 +278,7 @@
                         <tr>
                             <td class="num">3</td>
                             <td class="content-table">
-                                БНа мэра саратов завели 9 уголовных дел за аферы
+                                На мэра саратов завели 9 уголовных дел за аферы
 								<!--#include virtual="topic_tools.tpl" -->
 								<!--#include virtual="data-topic_root.tpl" -->
 								<!--#include virtual="data-topic_not-root.tpl" -->
@@ -284,7 +289,7 @@
                         <tr>
                             <td class="num">4</td>
                             <td class="content-table">
-                                ТРоссия готова к новому кризису хуже, чем в 2008
+                                Россия готова к новому кризису хуже, чем в 2008
 								<!--#include virtual="topic_tools.tpl" -->
 								<!--#include virtual="data-topic_root.tpl" -->
 								<!--#include virtual="data-topic_not-root.tpl" -->
@@ -292,6 +297,7 @@
                             <td>11:12 01.02.2012</td>
                             <td>24.04.2012_202527</td>
                         </tr>
+                    	</tbody>
                     </table>
 
                     <!--#include virtual="pagination.tpl" -->
