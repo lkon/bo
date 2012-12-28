@@ -1,5 +1,5 @@
 <!-- SECTION_DATA ROOT  (BEGIN) -->
-<!-- <form action="" class="js-popup info-section popup">
+<form action="" class="js-popup info-section popup">
 
     <i class="arr"></i>
 
@@ -29,11 +29,11 @@
             <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
         </div>
 
-    </div> //description
+    </div>
 
     <div class="button-form">
         <button class="btn btn-save"> Сохранить изменения</button>
         <button class="btn"> Блокировать проект</button>
     </div>
-</form> -->
+</form>
 <!-- SECTION_DATA ROOT  (END) -->
