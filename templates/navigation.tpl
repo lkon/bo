@@ -6,7 +6,7 @@
       <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="active" data-item="project-wrapper"><a href="index.html">Проекты</a></li>
+          <li class="active" data-item="project-wrapper"><a href="projects.html">Проекты</a></li>
           <li data-item="users-wrapper"><a href="users.html">Пользователи</a></li>
         </ul>
       </div><!--/.nav-collapse -->
