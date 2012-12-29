@@ -1,31 +1,15 @@
 require([
-   'js-error-log'
-  , 'console-log'
+	'jquery'
 
-  , 'jquery'
-  , 'Modernizr'
-
-  , './pages/__main'
-  , './widgets/__main'
+  , './pages/main'
 ], function(
-    jsErrorLog
-  , consoleLog
-
-  , $
-  , Modernizr
+    $
 
   , pages
-  , widgets
 ) {
-
-    jsErrorLog.init();
 
     $(function() {
         runPages();
-
-        if ( widgets ) {
-            widgets.init();
-        }
     });
 
     function runPages() {
