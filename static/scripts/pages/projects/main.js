@@ -3,15 +3,15 @@ define([
   , 'tagsinput'
   ,	'tablesorter'
   , 'repo/navigation/main'
+  , 'repo/data-popup/main'
   , './datepicker.custom/main'
-  , './data-popup/main'
 ], function(
 	$
   ,	tagsinput
   , tablesorter
   , navigation
-  , datepicker
   , popup
+  , datepicker
 ) {
 
 	function init () {
