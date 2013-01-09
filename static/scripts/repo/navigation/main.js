@@ -4,8 +4,7 @@ define([
 	$
 ) {
 
-	var $nav
-	  , $navTabs
+	var $navTabs
 	  ;
 
 	function init () {
@@ -15,10 +14,8 @@ define([
 	}
 
 	function updateVars () {
-		$nav = $('.navbar .nav');
-		$navTabs = $nav.find('li');
+		$navTabs = $('.navbar .nav li');
 	}
-
 
 	function activate (){
 		var types = $navTabs.map(function( index, element ){
@@ -32,29 +29,21 @@ define([
 		for (; i < len; i++) {
 			contentExists = $( "." + types[i] );
 			if( contentExists ){
-				$navTabs.filter(function(index){
-				    return $(this).attr( 'data-item' ) == contentExists.attr('class');
+				$navTabs.filter(function( index ){
+				    return $( this ).attr( 'data-item' ) === contentExists.attr( 'class' );
 				  }).addClass( 'active' );
 			}
 		}
 	}
 
 	function bindEvets () {
-		$navTabs.click(change);
+		$navTabs.click( change );
 	}
 
-	function change (e) {
-		var tabName = $(this).attr('data-item')
-		  , $nextTab = $('.tab.' + tabName)
-		  ;
-
-		$navTabs.removeClass('active');
-		$(this).addClass('active');
-
-		$tabs.removeClass('active');
-		$nextTab.addClass('active');
+	function change () {
+		$navTabs.removeClass( 'active' );
+		$(this).addClass( 'active' );
 	}
-
 
 	return {
 		init: init

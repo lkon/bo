@@ -1,10 +1,22 @@
 define([
-	'repo/navigation/main'
+	'jquery'
+  , 'tagsinput'
+  ,	'tablesorter'
+  , './datepicker.custom/main'
+  , 'repo/navigation/main'
+
 ], function(
-	navigation
+	$
+  ,	tagsinput
+  , tablesorter
+  , datepicker
+  , navigation
 ) {
 
 	function init () {
+	    $( '.tags' ).tagsInput();
+	    $( '.js-topic-data-table' ).tablesorter();
+	    datepicker.init();
 		navigation.init();
 		updateVars();
 		bindEvets();
