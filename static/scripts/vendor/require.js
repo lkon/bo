@@ -2043,98 +2043,33 @@ var requirejs, require, define;
 var jam = {
     "packages": [
         {
-            "name": "text",
-            "location": "vendor/text",
-            "main": "text.js"
-        },
-        {
-            "name": "console-log",
-            "location": "vendor/console-log"
-        },
-        {
-            "name": "datepicker-amd",
-            "location": "vendor/datepicker-amd",
-            "main": "datepicker.js"
-        },
-        {
-            "name": "add-active",
-            "location": "vendor/add-active"
-        },
-        {
-            "name": "jquery-ui-amd",
-            "location": "vendor/jquery-ui-amd"
-        },
-        {
             "name": "jquery",
             "location": "vendor/jquery",
-            "main": "dist/jquery.js"
+            "main": "jquery.js"
         },
         {
-            "name": "toggle-block",
-            "location": "vendor/toggle-block"
+            "name": "tagsinput",
+            "location": "vendor/jquery-tagsinput",
+            "main": "jquery.tagsinput.min.js"
         },
         {
-            "name": "Socialite",
-            "location": "vendor/Socialite",
-            "main": "socialite.js"
+            "name": "tablesorter",
+            "location": "vendor/jquery-tablesorter",
+            "main": "jquery.tablesorter.min.js"
         },
         {
-            "name": "waitforimages",
-            "location": "vendor/waitforimages",
-            "main": "jquery.waitforimages.js"
+            "name": "bootstrap",
+            "location": "vendor/bootstrap/js",
+            "main": "bootstrap.min.js"
         },
         {
-            "name": "respond",
-            "location": "vendor/respond",
-            "main": "respond.min.js"
-        },
-        {
-            "name": "js-error-log",
-            "location": "vendor/js-error-log"
-        },
-        {
-            "name": "underscore",
-            "location": "vendor/underscore",
-            "main": "underscore.js"
-        },
-        {
-            "name": "jquery-cookie-amd",
-            "location": "vendor/jquery-cookie-amd",
-            "main": "jquery.cookie.js"
-        },
-        {
-            "name": "tabs",
-            "location": "vendor/tabs"
-        },
-        {
-            "name": "equal-height",
-            "location": "vendor/equal-height"
-        },
-        {
-            "name": "Modernizr",
-            "location": "vendor/Modernizr"
-        },
-        {
-            "name": "colorbox",
-            "location": "vendor/colorbox"
-        },
-        {
-            "name": "fileuploader",
-            "location": "vendor/file-uploader",
-            "main": "fileuploader.js"
-        },
-        {
-            "name": "jquery.tinymce",
-            "location": "vendor/tiny_mce",
-            "main": "jquery.tinymce.js"
+            "name": "datepicker",
+            "location": "vendor/bootstrap-datepicker/js",
+            "main": "bootstrap-datepicker.js"
         }
     ],
     "version": "0.2.11",
-    "shim": {
-        "underscore": {
-            "exports": "_"
-        }
-    }
+    "shim": {}
 };
 
 if (typeof require !== "undefined" && require.config) {

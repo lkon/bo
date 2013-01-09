@@ -4,26 +4,20 @@
     <meta charset="UTF-8">
     <title>Проекты</title>
 
-    <link href="external/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="external/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="static/scripts/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="static/scripts/vendor/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="external/datepicker/css/datepicker.css">
-    <link rel="stylesheet" href="external/tagsinput/jquery.tagsinput.css">
+    <link rel="stylesheet" href="static/scripts/vendor/bootstrap-datepicker/css/datepicker.css">
+    <link rel="stylesheet" href="static/scripts/vendor/jquery-tagsinput/jquery.tagsinput.css">
 
-    <link rel="stylesheet" href="style.css" />
-
-    <script src="external/jquery.js"></script>
-    <script src="external/tagsinput/jquery.tagsinput.min.js"></script>
-    <script src="external/jquery.tablesorter.min.js"></script>
-
-    <script src="external/datepicker/js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="static/styles/main.css" />
 
     <script src="reposition.js"></script>
-	<script data-main="scripts/main" src="scripts/require.js"></script>
+	<script data-main="static/scripts/main" src="static/scripts/vendor/require.js"></script>
 </head>
 <body data-autorun="projects">
     <div class="container">
-	<!--#include virtual="templates/navigation.tpl" -->
+	<!--#include virtual="static/templates/navigation.php" -->
         <div class="project-wrapper">
 
             <div class="row-fluid">
@@ -86,8 +80,8 @@
                         <div class="headling">
                         	<h2>РБК Daily</h2>
                         	<i class="ico big info js-show-popup"></i>
-							<!--#include virtual="templates/data-project_root.tpl" -->
-							<!--#include virtual="templates/data-project_not-root.tpl" -->
+							<!--#include virtual="static/templates/data-project_root.php" -->
+							<!--#include virtual="static/templates/data-project_not-root.php" -->
                     	</div>
                     </div>
 
@@ -95,7 +89,7 @@
                         <div class="headling">
                             <h5>Разделы</h5>
                             <a href="#" class="add-project js-show-popup">Добавить раздел</a>
-							<!--#include virtual="templates/adding-section_root.tpl" -->
+							<!--#include virtual="static/templates/adding-section_root.php" -->
                         </div>
                         <div class="checkbox-block">
                             <ul>
@@ -112,8 +106,8 @@
                                         В мире
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
 
                                 <li>
@@ -122,8 +116,8 @@
                                         Банки/Финансы
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
 
                                 <li>
@@ -132,8 +126,8 @@
                                         Главная
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
                             </ul>
 
@@ -144,8 +138,8 @@
                                         ТЭК
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
 
                                 <li>
@@ -154,8 +148,8 @@
                                         Теликом/Медиа
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
 
                                 <li>
@@ -164,8 +158,8 @@
                                         В фокусе
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
 
                                 <li>
@@ -174,8 +168,8 @@
                                         Индустрия
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
                             </ul>
 
@@ -186,8 +180,8 @@
                                         CNews/Autonews
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
 
                                 <li>
@@ -196,8 +190,8 @@
                                         Общество
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
 
                                 <li>
@@ -206,8 +200,8 @@
                                         Потребрынок
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
 
                                 <li>
@@ -216,8 +210,8 @@
                                         Lifestyle
                                     </label>
                                     <i class="ico info js-show-popup"></i>
-									<!--#include virtual="templates/data-section_root.tpl" -->
-									<!--#include virtual="templates/data-section_not-root.tpl" -->
+									<!--#include virtual="static/templates/data-section_root.php" -->
+									<!--#include virtual="static/templates/data-section_not-root.php" -->
                                 </li>
                             </ul>
                             <i class="after-justify"></i>
@@ -258,9 +252,9 @@
                             <td class="num">1</td>
                             <td class="content-table">
                                 Россия готова к новому кризису хуже, чем в 2008
-								<!--#include virtual="templates/topic_tools.tpl" -->
-								<!--#include virtual="templates/data-topic_root.tpl" -->
-								<!--#include virtual="templates/data-topic_not-root.tpl" -->
+								<!--#include virtual="static/templates/topic_tools.php" -->
+								<!--#include virtual="static/templates/data-topic_root.php" -->
+								<!--#include virtual="static/templates/data-topic_not-root.php" -->
                             </td>
                             <td>11:12 03.02.2012</td>
                             <td>24.04.2012_202527</td>
@@ -269,9 +263,9 @@
                             <td class="num">2</td>
                             <td class="content-table">
                                 Московские митинги
-								<!--#include virtual="templates/topic_tools.tpl" -->
-								<!--#include virtual="templates/data-topic_root.tpl" -->
-								<!--#include virtual="templates/data-topic_not-root.tpl" -->
+								<!--#include virtual="static/templates/topic_tools.php" -->
+								<!--#include virtual="static/templates/data-topic_root.php" -->
+								<!--#include virtual="static/templates/data-topic_not-root.php" -->
                             </td>
                             <td>11:12 04.02.2012</td>
                             <td>24.04.2012_202527</td>
@@ -280,9 +274,9 @@
                             <td class="num">3</td>
                             <td class="content-table">
                                 На мэра саратов завели 9 уголовных дел за аферы
-								<!--#include virtual="templates/topic_tools.tpl" -->
-								<!--#include virtual="templates/data-topic_root.tpl" -->
-								<!--#include virtual="templates/data-topic_not-root.tpl" -->
+								<!--#include virtual="static/templates/topic_tools.php" -->
+								<!--#include virtual="static/templates/data-topic_root.php" -->
+								<!--#include virtual="static/templates/data-topic_not-root.php" -->
                             </td>
                             <td>11:12 02.02.2012</td>
                             <td>24.04.2012_202527</td>
@@ -291,9 +285,9 @@
                             <td class="num">4</td>
                             <td class="content-table">
                                 Россия готова к новому кризису хуже, чем в 2008
-								<!--#include virtual="templates/topic_tools.tpl" -->
-								<!--#include virtual="templates/data-topic_root.tpl" -->
-								<!--#include virtual="templates/data-topic_not-root.tpl" -->
+								<!--#include virtual="static/templates/topic_tools.php" -->
+								<!--#include virtual="static/templates/data-topic_root.php" -->
+								<!--#include virtual="static/templates/data-topic_not-root.php" -->
                             </td>
                             <td>11:12 01.02.2012</td>
                             <td>24.04.2012_202527</td>
@@ -301,7 +295,7 @@
                     	</tbody>
                     </table>
 
-                    <!--#include virtual="templates/pagination.tpl" -->
+                    <!--#include virtual="static/templates/pagination.php" -->
 
                 </div> <!-- //content -->
             </div>
@@ -310,7 +304,6 @@
 
     <!-- POPUP -->
     <div class="overlay js-overlay"></div>
-    <!--#include virtual="templates/project-delete-confirm.tpl" -->
-	<script src="external/bootstrap/js/bootstrap.min.js"></script>
+    <!--#include virtual="static/templates/project-delete-confirm.php" -->
 </body>
 </html>

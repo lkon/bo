@@ -53,7 +53,7 @@
             <label class="checkbox active"> <input type="checkbox" name="active" checked> Премодерация </label>
         </div>
 
-    </div> //description
+    </div>
 
     <div class="button-form">
         <button class="btn btn-save"> Сохранить изменения</button>

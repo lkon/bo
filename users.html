@@ -4,24 +4,20 @@
     <meta charset="UTF-8">
     <title>Пользователи</title>
 
-    <link href="external/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="external/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
+    <link href="static/scripts/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="static/scripts/vendor/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="external/datepicker/css/datepicker.css">
-    <link rel="stylesheet" href="external/tagsinput/jquery.tagsinput.css">
+    <link rel="stylesheet" href="static/scripts/vendor/bootstrap-datepicker/css/datepicker.css">
+    <link rel="stylesheet" href="static/scripts/vendor/jquery-tagsinput/jquery.tagsinput.css">
 
-    <script src="external/jquery.js"></script>
-    <script src="external/datepicker/js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="static/styles/main.css" />
 
-    <script src="external/tagsinput/jquery.tagsinput.min.js"></script>
     <script src="reposition.js"></script>
-
-	<script data-main="scripts/main" src="scripts/require.js"></script>
+	<script data-main="static/scripts/main" src="static/scripts/vendor/require.js"></script>
 </head>
 <body  data-autorun="users">
     <div class="container">
-	<!--#include virtual="navigation.tpl" -->
+	<!--#include virtual="static/templates/navigation.php" -->
         <div class="users-wrapper">
 
             <div class="row-fluid">
@@ -90,7 +86,7 @@
                                 <li><a href="#">100</a></li>
                             </ul>
                         </div>
-                    </div> <!-- //description -->
+                    </div>
 
                     <table class="table table-bordered users-table js-user-data-table">
                         <tr>
@@ -104,16 +100,16 @@
                             <td class="num">1</td>
                             <td class="content-table">
                                 Артюнов Григорий Павлович
-								<!--#include virtual="users_tools-user.tpl" -->
-								<!--#include virtual="user-state.tpl" -->
+								<!--#include virtual="static/templates/users_tools-user.php" -->
+								<!--#include virtual="static/templates/user-state.php" -->
                             </td>
                             <td>
                             	RBC Daily
-								<!--#include virtual="users_tools-project.tpl" -->
+								<!--#include virtual="static/templates/users_tools-project.php" -->
                             </td>
                             <td>
                                 Администратор
-								<!--#include virtual="users_tools-access.tpl" -->
+								<!--#include virtual="static/templates/users_tools-access.php" -->
                             </td>
                         </tr>
                         <tr>
@@ -121,11 +117,11 @@
                             <td class="content-table"></td>
                             <td>
                             	Спорт
-                            	<!--#include virtual="users_tools-project.tpl" -->
+                            	<!--#include virtual="static/templates/users_tools-project.php" -->
                             </td>
                             <td>
                                 Администратор
-								<!--#include virtual="users_tools-access.tpl" -->
+								<!--#include virtual="static/templates/users_tools-access.php" -->
                             </td>
                         </tr>
                         <tr>
@@ -135,11 +131,11 @@
                             </td>
                             <td>
                             	Стиль
-                            	<!--#include virtual="users_tools-project.tpl" -->
+                            	<!--#include virtual="static/templates/users_tools-project.php" -->
                             </td>
                             <td>
                                 Администратор
-								<!--#include virtual="users_tools-access.tpl" -->
+								<!--#include virtual="static/templates/users_tools-access.php" -->
                             </td>
                         </tr>
 
@@ -147,16 +143,16 @@
                             <td class="num">2</td>
                             <td class="content-table">
                                 Астахов Павел Алексеевич
-								<!--#include virtual="users_tools-user.tpl" -->
-								<!--#include virtual="user-state.tpl" -->
+								<!--#include virtual="static/templates/users_tools-user.php" -->
+								<!--#include virtual="static/templates/user-state.php" -->
                             </td>
                             <td>
                             	Недвижимость
-                            	<!--#include virtual="users_tools-project.tpl" -->
+                            	<!--#include virtual="static/templates/users_tools-project.php" -->
                             </td>
                             <td>
                                 Администратор
-                                <!--#include virtual="users_tools-access.tpl" -->
+                                <!--#include virtual="static/templates/users_tools-access.php" -->
                             </td>
                         </tr>
                         <tr>
@@ -164,27 +160,27 @@
                             <td class="content-table"></td>
                             <td>
                             	Спорт
-                            	<!--#include virtual="users_tools-project.tpl" -->
+                            	<!--#include virtual="static/templates/users_tools-project.php" -->
                             </td>
                             <td>
                                 Администратор
-                                <!--#include virtual="users_tools-access.tpl" -->
+                                <!--#include virtual="static/templates/users_tools-access.php" -->
                             </td>
                         </tr>
                         <tr class="group">
                             <td class="num">3</td>
                             <td class="content-table">
                                 Бережная Ольга Владимировна
-								<!--#include virtual="users_tools-user.tpl" -->
-								<!--#include virtual="user-state.tpl" -->
+								<!--#include virtual="static/templates/users_tools-user.php" -->
+								<!--#include virtual="static/templates/user-state.php" -->
                             </td>
                             <td>
                             	Tata
-                            	<!--#include virtual="users_tools-project.tpl" -->
+                            	<!--#include virtual="static/templates/users_tools-project.php" -->
                             </td>
                             <td>
                                 Администратор
-                                <!--#include virtual="users_tools-access.tpl" -->
+                                <!--#include virtual="static/templates/users_tools-access.php" -->
                             </td>
                         </tr>
 
@@ -194,7 +190,7 @@
                         </tr>
                     </table>
 
-					<!--#include virtual="pagination.tpl" -->
+					<!--#include virtual="static/templates/pagination.php" -->
 
                 </div> <!-- //content -->
             </div>
@@ -203,9 +199,8 @@
 
     <!-- POPUP -->
     <div class="overlay js-overlay"></div>
-    <!--#include virtual="project-delete-confirm.tpl" -->
-    <!--#include virtual="state-change-confirm.tpl" -->
-	<script src="external/bootstrap/js/bootstrap.min.js"></script>
+    <!--#include virtual="static/templates/project-delete-confirm.php" -->
+    <!--#include virtual="static/templates/state-change-confirm.php" -->
 	<script type="text/template" id="admin">
 		Администратор
 		<div class="tools">

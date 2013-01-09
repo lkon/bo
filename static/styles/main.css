@@ -97,10 +97,10 @@ h1,h2,h3,h4,h5,h6{
 		width:14px;
 		height:14px;
 		margin:0 10px;
-		background:url("external/bootstrap/img/glyphicons-halflings-white.png") -168px 0 no-repeat;
+		background:url("../scripts/vendor/bootstrap/img/glyphicons-halflings-white.png") -168px 0 no-repeat;
 	}
 	.log-state a.login:hover{
-		background:url("external/bootstrap/img/glyphicons-halflings.png") -168px 0 no-repeat;
+		background:url("../scripts/vendor/bootstrap/img/glyphicons-halflings.png") -168px 0 no-repeat;
 		background-color:transparent !important;
 
 	}
@@ -113,10 +113,10 @@ h1,h2,h3,h4,h5,h6{
 		width:12px;
 		height:9px;
 		margin:0 10px;
-		background:url("external/bootstrap/img/glyphicons-halflings-white.png") -337px -97px no-repeat;
+		background:url("../scripts/vendor/bootstrap/img/glyphicons-halflings-white.png") -337px -97px no-repeat;
 	}
 	.log-state a.logout:hover{
-		background:url("external/bootstrap/img/glyphicons-halflings.png") -337px -97px no-repeat;
+		background:url("../scripts/vendor/bootstrap/img/glyphicons-halflings.png") -337px -97px no-repeat;
 		background-color:transparent !important;
 	}
 
@@ -149,7 +149,7 @@ h1,h2,h3,h4,h5,h6{
 .search-form{
     border: 1px solid #d7d7d7;
     background: #fff;
-    padding: 5px 25px 0;
+    padding: 10px 25px 0;
 }
 
 .search-form .headling{
@@ -597,16 +597,16 @@ h1,h2,h3,h4,h5,h6{
             background: url('images/sprite.png') no-repeat 0 -60px;
         }
     .ico.blocked{
-        background: url('external/bootstrap/img/glyphicons-halflings.png') no-repeat -215px -95px;
+        background: url('../scripts/vendor/bootstrap/img/glyphicons-halflings.png') no-repeat -215px -95px;
     }
     .ico.unlocked{
         background: url('images/sprite.png') no-repeat 0 -23px;
     }
     .ico.deleted{
-    	background: url('external/bootstrap/img/glyphicons-halflings.png') no-repeat -455px 1px;
+    	background: url('../scripts/vendor/bootstrap/img/glyphicons-halflings.png') no-repeat -455px 1px;
     }
     .ico.repaired{
-        background: url('external/bootstrap/img/glyphicons-halflings.png') no-repeat 0 -23px;
+        background: url('../scripts/vendor/bootstrap/img/glyphicons-halflings.png') no-repeat 0 -23px;
     }
 
     .ico.arr{
