@@ -2,22 +2,25 @@ define([
 	'jquery'
   , 'tagsinput'
   ,	'tablesorter'
-  , './datepicker.custom/main'
   , 'repo/navigation/main'
-
+  , './datepicker.custom/main'
+  , './data-popup/main'
 ], function(
 	$
   ,	tagsinput
   , tablesorter
-  , datepicker
   , navigation
+  , datepicker
+  , popup
 ) {
 
 	function init () {
 	    $( '.tags' ).tagsInput();
 	    $( '.js-topic-data-table' ).tablesorter();
-	    datepicker.init();
 		navigation.init();
+	    datepicker.init();
+	    popup.init();
+
 		updateVars();
 		bindEvets();
 	}

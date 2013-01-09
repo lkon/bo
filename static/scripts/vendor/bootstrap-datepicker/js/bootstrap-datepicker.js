@@ -18,7 +18,6 @@
  * ========================================================= */
 
 !function( $ ) {
-	console.log( 'datepicker belin to load' );
 
 	// Picker object
 
@@ -451,5 +450,4 @@
 								'</table>'+
 							'</div>'+
 						'</div>';
-console.log( 'datepicker finished to load' );
 }( window.jQuery )
