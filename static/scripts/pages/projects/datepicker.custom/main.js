@@ -4,7 +4,7 @@ define([
 ], function(
 	$
 ) {
-	var $calendar
+	var $calendar;
 
 	function init () {
 		updateVars();

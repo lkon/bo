@@ -5,6 +5,7 @@ define([
   , 'repo/navigation/main'
   , 'repo/data-popup/main'
   , './datepicker.custom/main'
+  , './toggle-topic-visibility/main'
 ], function(
 	$
   ,	tagsinput
@@ -12,6 +13,7 @@ define([
   , navigation
   , popup
   , datepicker
+  , topic
 ) {
 
 	function init () {
@@ -20,6 +22,7 @@ define([
 		navigation.init();
 	    datepicker.init();
 	    popup.init();
+	    topic.init();
 
 		updateVars();
 		bindEvets();
